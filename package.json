@@ -1,0 +1,8 @@
+{
+  "name": "webpack-intro",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/benjaminhoffman/webpack-intro.git",
+  "author": "Benjamin Hoffman <bhoffman8@gmail.com>",
+  "license": "MIT"
+}
