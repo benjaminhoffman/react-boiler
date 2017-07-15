@@ -1,7 +1,7 @@
 {
   "name": "webpack-intro",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "repository": "https://github.com/benjaminhoffman/webpack-intro.git",
   "author": "Benjamin Hoffman <bhoffman8@gmail.com>",
   "license": "MIT",
@@ -12,7 +12,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "start": "webpack-dev-server --open"
+    "start": "webpack && webpack-dev-server --open"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.16",

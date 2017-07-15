@@ -4,6 +4,13 @@ import Gh from './gh.png'
 import Csv from './csv.csv'
 import Print from './print.js'
 
+console.log(module.hot)
+if (module.hot) {
+
+  // module.hot.accept()
+}
+
+
 function component () {
   const element = document.createElement('div')
 
