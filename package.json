@@ -6,6 +6,10 @@
   "author": "Benjamin Hoffman <bhoffman8@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "lodash": "^4.17.4",
     "webpack": "^3.3.0"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }
