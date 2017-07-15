@@ -1,7 +1,8 @@
-
 import _ from 'lodash'
 import css from './styles.css'
 import Gh from './gh.png'
+import Csv from './csv.csv'
+import Print from './print.js'
 
 function component () {
   const element = document.createElement('div')
@@ -9,8 +10,15 @@ function component () {
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
   element.classList.add('hello')
   const image = new Image()
-  image.src = `./dist/${Gh}`
-  element.appendChild(image)
+  image.src = `./${Gh}`
+  // element.appendChild(image)
+
+  // console.log(Csv)
+
+  const btn = document.createElement('button')
+  btn.innerHTML = 'Click me'
+  btn.onclick = Print
+  element.appendChild(btn)
   return element
 }
 
