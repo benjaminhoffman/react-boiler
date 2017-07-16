@@ -1,3 +1,3 @@
 export default function print () {
-  console.log('Printing!!!')
+  consodle.log('Printing!!!')
 }

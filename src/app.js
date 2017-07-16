@@ -4,20 +4,13 @@ import Gh from './gh.png'
 import Csv from './csv.csv'
 import Print from './print.js'
 
-console.log(module.hot)
-if (module.hot) {
-
-  // module.hot.accept()
-}
-
-
 function component () {
   const element = document.createElement('div')
 
   element.innerHTML = _.join(['Hello', 'webpack'], ' ')
   element.classList.add('hello')
   const image = new Image()
-  image.src = `./${Gh}`
+  image.src = './' + Gh
   // element.appendChild(image)
 
   // console.log(Csv)

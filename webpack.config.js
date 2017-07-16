@@ -3,29 +3,38 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
-module.exports = {
+const env = process.env.NODE_ENV || 'development'
+
+const isProductionLike = env === 'production' || env === 'staging'
+
+const common = {
   entry: {
     app: './src/app.js',
     print: './src/print.js'
   },
+  devtool: 'source-map',
+  // devtool: 'cheap-module-source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(
+        isProductionLike ? 'production' : 'development')
+    }),
     new webpack.HotModuleReplacementPlugin(),  // Enable HMR
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: 'Output Management'
-    }),
+    })
   ],
   output: {
     filename: '[name].bundle.js',
-    // filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/',
+    sourceMapFilename: '[name].map'
   },
-  // devtool: 'inline-source-map',
   devServer: {
     hot: true,   // use HMR
     contentBase: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -44,7 +53,52 @@ module.exports = {
       {
         test: /\.xml$/,
         use: ['xml-loader']
+      },
+      {
+        test: /\.html$/,
+        use: [ 'html-loader' ]
       }
     ]
   }
 }
+
+// const development = {
+//   ...common,
+//   detool: 'cheap-module-source-map',
+//   output: {
+//     ...common.output,
+//     publicPath: '/'
+//   },
+//   {
+//     plugins: [
+//       ...common.plugins
+//     ]
+//   },
+//   module: {
+//     ...common.module,
+//     rules: [
+//       ...common.module.rules
+//     ]
+//   }
+// }
+//
+// const production = {
+//   ...common,
+//   devtool: 'source-map',
+//   output: {
+//     ...common.output,
+//     publicPath: '/'
+//   }
+//   plugins: [
+//     ...common.module,
+// new webpack.optimize.UglifyJsPlugin({
+//   sourceMap: true,
+//   comments: false
+// })
+//   ],
+//   module: {
+//     ...common.module
+//   }
+// }
+
+module.exports = isProductionLike ? production : common   // TODO change to development
