@@ -1,13 +1,13 @@
 import _ from 'lodash'
 import css from './styles.css'
 import Gh from './gh.png'
-import Csv from './csv.csv'
+// import Csv from './csv.csv'
 import Print from './print.js'
+import moment from 'moment'
 
 function component () {
   const element = document.createElement('div')
-
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+  element.innerHTML = _.join(['Hello', 'webpack', `${moment().format()}`], ' ')
   element.classList.add('hello')
   const image = new Image()
   image.src = './' + Gh

@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const Merge = require('webpack-merge')
-
 const env = process.env.NODE_ENV || 'development'
+const ManifestPlugin = require('webpack-manifest-plugin')
 
 // const isProductionLike = env === 'production' || env === 'staging'
 const isProductionLike = true
@@ -12,6 +12,7 @@ const isProductionLike = true
 console.log('isProductionLike', isProductionLike)
 
 const common = {
+  // entry: './src/app.js',
   entry: {
     app: './src/app.js',
     print: './src/print.js'
@@ -36,13 +37,23 @@ const common = {
     })
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    sourceMapFilename: '[name].map'
+    sourceMapFilename: 'bundle.map'
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
+      },
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
@@ -92,10 +103,10 @@ const development = Merge(common, {
 const production = Merge(common, {
   // devtool: 'source-map',
   output: {
-    filename: '[name].[hash].bundle.js',
+    filename: '[name].[chunkhash:8].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    sourceMapFilename: '[name].[hash].map'
+    sourceMapFilename: '[name].[chunkhash:8].map'
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -103,7 +114,8 @@ const production = Merge(common, {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       comments: false
-    })
+    }),
+    new ManifestPlugin()
   ],
   module: {}
 })
