@@ -13,9 +13,7 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "start": "webpack && webpack-dev-server --open",
-    "prod": "webpack -p",
-    "build:dev": "webpack --env=dev --progress --profile --colors",
-    "build:dist": "webpack --env=prod --progress --profile --colors"
+    "prod": "webpack -p"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.16",
@@ -25,6 +23,7 @@
     "html-webpack-plugin": "^2.29.0",
     "style-loader": "^0.18.2",
     "webpack-dev-server": "^2.5.1",
+    "webpack-merge": "^4.1.0",
     "xml-loader": "^1.2.1"
   }
 }

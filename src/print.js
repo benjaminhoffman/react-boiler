@@ -1,3 +1,10 @@
+
+import _ from 'lodash'
+
 export default function print () {
-  consodle.log('Printing!!!')
+  const test = [1,2,3,4,5]
+
+  _.forEach(test, function (v) {
+    console.log('Printing!!!')
+  })
 }

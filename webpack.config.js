@@ -2,10 +2,14 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
+const Merge = require('webpack-merge')
 
 const env = process.env.NODE_ENV || 'development'
 
-const isProductionLike = env === 'production' || env === 'staging'
+// const isProductionLike = env === 'production' || env === 'staging'
+const isProductionLike = true
+
+console.log('isProductionLike', isProductionLike)
 
 const common = {
   entry: {
@@ -19,10 +23,16 @@ const common = {
       'process.env.NODE_ENV': JSON.stringify(
         isProductionLike ? 'production' : 'development')
     }),
-    new webpack.HotModuleReplacementPlugin(),  // Enable HMR
-    new CleanWebpackPlugin(['dist']),
+    // new webpack.HotModuleReplacementPlugin(),  // Enable HMR
     new HtmlWebpackPlugin({
       title: 'Output Management'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "manifest",
+      minChunks: Infinity,
     })
   ],
   output: {
@@ -30,11 +40,6 @@ const common = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     sourceMapFilename: '[name].map'
-  },
-  devServer: {
-    hot: true,   // use HMR
-    contentBase: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
   },
   module: {
     rules: [
@@ -62,43 +67,45 @@ const common = {
   }
 }
 
-// const development = {
-//   ...common,
-//   detool: 'cheap-module-source-map',
-//   output: {
-//     ...common.output,
-//     publicPath: '/'
-//   },
-//   {
-//     plugins: [
-//       ...common.plugins
-//     ]
-//   },
-//   module: {
-//     ...common.module,
-//     rules: [
-//       ...common.module.rules
-//     ]
-//   }
-// }
-//
-// const production = {
-//   ...common,
-//   devtool: 'source-map',
-//   output: {
-//     ...common.output,
-//     publicPath: '/'
-//   }
-//   plugins: [
-//     ...common.module,
-// new webpack.optimize.UglifyJsPlugin({
-//   sourceMap: true,
-//   comments: false
-// })
-//   ],
-//   module: {
-//     ...common.module
-//   }
-// }
+const development = Merge(common, {
+  // detool: 'cheap-module-source-map',
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    sourceMapFilename: '[name].map'
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new webpack.HotModuleReplacementPlugin(),  // Enable HMR
+  ],
+  devServer: {
+    hot: true,   // use HMR
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+  },
+  module: {
+    rules: []
+  }
+})
 
-module.exports = isProductionLike ? production : common   // TODO change to development
+const production = Merge(common, {
+  // devtool: 'source-map',
+  output: {
+    filename: '[name].[hash].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    sourceMapFilename: '[name].[hash].map'
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new webpack.HotModuleReplacementPlugin(),   // Enable HMR
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      comments: false
+    })
+  ],
+  module: {}
+})
+
+module.exports = isProductionLike ? production : development   // TODO change to development
