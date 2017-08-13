@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const Merge = require('webpack-merge')
@@ -17,6 +18,11 @@ const common = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(
         isProductionLike ? 'production' : 'development')
+    }),
+    // generates our html file
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html'
     }),
     // creates a file for all shared (common) modules across entry points
     // loads once and uses cache for pagespeed optimizations
@@ -76,7 +82,7 @@ const development = Merge(common, {
     sourceMapFilename: '[name].map'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),          // replace dist dir on each new build
+    // new CleanWebpackPlugin(['dist']),          // replace dist dir on each new build
     new webpack.HotModuleReplacementPlugin(),  // Enable HMR
   ],
   devServer: {

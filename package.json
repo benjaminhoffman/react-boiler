@@ -5,18 +5,15 @@
   "repository": "https://github.com/benjaminhoffman/webpack-intro.git",
   "author": "Benjamin Hoffman <bhoffman8@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.4",
-    "moment": "^2.18.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "webpack": "^3.3.0"
-  },
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
     "start": "webpack && webpack-dev-server --open",
     "prod": "webpack -p"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -29,8 +26,12 @@
     "css-loader": "^0.28.4",
     "csv-loader": "^2.1.1",
     "file-loader": "^0.11.2",
+    "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.29.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "style-loader": "^0.18.2",
+    "webpack": "^3.3.0",
     "webpack-chunk-hash": "^0.4.0",
     "webpack-dev-server": "^2.5.1",
     "webpack-manifest-plugin": "^1.1.2",
