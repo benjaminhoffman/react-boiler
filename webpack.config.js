@@ -6,27 +6,21 @@ const Merge = require('webpack-merge')
 const env = process.env.NODE_ENV || 'development'
 const ManifestPlugin = require('webpack-manifest-plugin')
 
-// const isProductionLike = env === 'production' || env === 'staging'
-const isProductionLike = true
+const isProductionLike = env === 'production' || env === 'staging'
 
 console.log('isProductionLike', isProductionLike)
 
 const common = {
-  // entry: './src/app.js',
   entry: {
     app: './src/app.js',
-    print: './src/print.js'
   },
-  devtool: 'source-map',
-  // devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(
         isProductionLike ? 'production' : 'development')
     }),
-    // new webpack.HotModuleReplacementPlugin(),  // Enable HMR
     new HtmlWebpackPlugin({
-      title: 'Output Management'
+      title: 'Homepage Title via Webpack'
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
@@ -79,7 +73,7 @@ const common = {
 }
 
 const development = Merge(common, {
-  // detool: 'cheap-module-source-map',
+  devtool: 'eval-source-map', // webpack.js.org/configuration/devtool/#development
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -87,21 +81,18 @@ const development = Merge(common, {
     sourceMapFilename: '[name].map'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['dist']),          // replace dist dir on each new build
     new webpack.HotModuleReplacementPlugin(),  // Enable HMR
   ],
   devServer: {
     hot: true,   // use HMR
     contentBase: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-  },
-  module: {
-    rules: []
   }
 })
 
 const production = Merge(common, {
-  // devtool: 'source-map',
+  devtool: 'nosources-source-map',  // webpack.js.org/configuration/devtool/#production
   output: {
     filename: '[name].[chunkhash:8].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -109,15 +100,12 @@ const production = Merge(common, {
     sourceMapFilename: '[name].[chunkhash:8].map'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new webpack.HotModuleReplacementPlugin(),   // Enable HMR
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       comments: false
     }),
     new ManifestPlugin()
-  ],
-  module: {}
+  ]
 })
 
 module.exports = isProductionLike ? production : development   // TODO change to development
