@@ -1,5 +1,4 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const Merge = require('webpack-merge')
@@ -19,16 +18,12 @@ const common = {
       'process.env.NODE_ENV': JSON.stringify(
         isProductionLike ? 'production' : 'development')
     }),
-    new HtmlWebpackPlugin({
-      title: 'Homepage Title via Webpack'
-    }),
+    // creates a file for all shared (common) modules across entry points
+    // loads once and uses cache for pagespeed optimizations
+    // webpack.js.org/plugins/commons-chunk-plugin/
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "manifest",
-      minChunks: Infinity,
-    })
   ],
   output: {
     filename: 'bundle.js',
@@ -94,6 +89,7 @@ const development = Merge(common, {
 const production = Merge(common, {
   devtool: 'nosources-source-map',  // webpack.js.org/configuration/devtool/#production
   output: {
+    // use [chunkhash] for asset caching
     filename: '[name].[chunkhash:8].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
@@ -108,4 +104,4 @@ const production = Merge(common, {
   ]
 })
 
-module.exports = isProductionLike ? production : development   // TODO change to development
+module.exports = isProductionLike ? production : development
