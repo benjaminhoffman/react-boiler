@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from './Header.jsx'
 import Home from './Home'
 import Contact from './Contact'
+import styles from './Main.css'
 
 class Main extends Component {
   constructor (props) {
@@ -11,18 +12,19 @@ class Main extends Component {
       activeTab: 'Home'
     }
     this.onTabClick = this.onTabClick.bind(this)
+    this.onContact = this.onContact.bind(this)
   }
 
   render () {
     return (
-      <div>
+      <div className={styles.body}>
         <Header
           tabs={this.state.tabs}
           activeTab={this.state.activeTab}
           onTabClick={this.onTabClick}
           />
         {this.state.activeTab === 'Home' && <Home />}
-        {this.state.activeTab === 'Contact' && <Contact />}
+        {this.state.activeTab === 'Contact' && <Contact onContact={this.onContact} />}
       </div>
     )
   }
@@ -31,6 +33,11 @@ class Main extends Component {
     this.setState({
       activeTab: e.target.innerText
     })
+  }
+  onContact (e) {
+    debugger
+    e.preventDefault()
+    console.log(e.target.value)
   }
 }
 

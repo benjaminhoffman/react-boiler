@@ -11,7 +11,6 @@ class Header extends Component {
   }
 
   render () {
-    console.log(styles)
     return (
       <div className={styles.tabs}>
         {this.props.tabs.map(tab => {

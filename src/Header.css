@@ -1,8 +1,7 @@
 .tab {
-  background-color: green;
+  margin: 0 20px 20px 0;
 }
 
 .tabs {
   display: flex;
-  flex-direction: column;
 }
