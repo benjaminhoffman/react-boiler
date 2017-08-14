@@ -12,7 +12,7 @@ console.log('isProductionLike', isProductionLike)
 
 const common = {
   entry: {
-    app: './src/app.js',
+    app: './src/App.js',
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -51,7 +51,19 @@ const common = {
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: true,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]'
+            }
+          }
+        ]
       },
       {
         test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
@@ -70,11 +82,14 @@ const common = {
         use: [ 'html-loader' ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 }
 
 const development = Merge(common, {
-  devtool: 'eval-source-map', // webpack.js.org/configuration/devtool/#development
+  devtool: 'cheap-module-eval-source-map', // webpack.js.org/configuration/devtool/#development
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -82,7 +97,7 @@ const development = Merge(common, {
     sourceMapFilename: '[name].map'
   },
   plugins: [
-    // new CleanWebpackPlugin(['dist']),          // replace dist dir on each new build
+    new CleanWebpackPlugin(['dist']),          // replace dist dir on each new build
     new webpack.HotModuleReplacementPlugin(),  // Enable HMR
   ],
   devServer: {
