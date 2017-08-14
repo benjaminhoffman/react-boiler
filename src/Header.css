@@ -1,0 +1,8 @@
+.tab {
+  background-color: green;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+}
