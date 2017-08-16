@@ -1,8 +1,13 @@
-follows the webpack guide here: https://webpack.js.org/guides/getting-started/
+made-from-scratch react boiler.  with webpack & babel, yarn.
 
+although create-react-app is great, sometimes you want a home cooked meal.
+
+todo:
+- add redux
 
 Get Started
 ```bash
-yarn
-yarn Started
+make sure you have yarn installed
+$ yarn
+$ yarn start
 ```
