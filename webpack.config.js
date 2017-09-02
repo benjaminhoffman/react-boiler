@@ -45,7 +45,7 @@ const common = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'stage-0']
+            presets: ['env', 'stage-0', "react"]
           }
         }
       },
