@@ -7,7 +7,8 @@ todo:
 
 Get Started
 ```bash
-make sure you have yarn installed
-$ yarn
+make sure you have yarn installed (`npm install yarn -g`)
+$ yarn install
 $ yarn start
+-> http://localhost:8080
 ```
