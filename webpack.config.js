@@ -5,9 +5,10 @@ const webpack = require('webpack')
 const Merge = require('webpack-merge')
 const env = process.env.NODE_ENV || 'development'
 const ManifestPlugin = require('webpack-manifest-plugin')
+require('dotenv').config()
+
 
 const isProductionLike = env === 'production' || env === 'staging'
-
 console.log('isProductionLike', isProductionLike)
 
 const common = {
@@ -18,6 +19,7 @@ const common = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProductionLike ? 'production' : 'development'),
+        // API_KEY: JSON.stringify(process.env.API_KEY)
       }
     }),
     // generates our html file

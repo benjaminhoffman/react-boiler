@@ -7,6 +7,8 @@ todo:
 - [ ] add enzyme/jest
 - [ ] add react router 4
 - [ ] add logging
+- [ ] less/sass/nextcss
+- [ ] css linter
 
 Get Started
 ```bash
