@@ -12,6 +12,7 @@
     "prod": "webpack -p"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1"
   },

@@ -16,8 +16,9 @@ const common = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(
-        isProductionLike ? 'production' : 'development')
+      'process.env': {
+        NODE_ENV: JSON.stringify(isProductionLike ? 'production' : 'development'),
+      }
     }),
     // generates our html file
     new HtmlWebpackPlugin({
