@@ -5,13 +5,13 @@ although create-react-app is great, sometimes you want a home cooked meal.
 todo:
 - [ ] see readme from `nri` repo
 - [ ] add redux
-- [ ] add jest/enzyme
+- [x] add jest/enzyme
 - [ ] add react router 4
 - [ ] add logging
 - [ ] less/sass/nextcss
 - [ ] css linter
 - [ ] jsdoc
-- [ ] `.babelrc` (see `nri` repo)
+- [x] `.babelrc` (see `nri` repo)
 - [x] redux
 - [ ] use `static`
 - [x] add `.env` for env vars

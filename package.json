@@ -7,9 +7,16 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch",
+    "prod": "webpack -p",
     "start": "webpack && webpack-dev-server --open",
-    "prod": "webpack -p"
+    "test": "jest --no-cache --notify",
+    "watch": "webpack --watch"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "dependencies": {
     "dotenv": "^4.0.0",

@@ -13,7 +13,7 @@ console.log('isProductionLike', isProductionLike)
 
 const common = {
   entry: {
-    app: './src/index.jsx',
+    app: './client/index.jsx',
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -24,7 +24,7 @@ const common = {
     }),
     // generates our html file
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './client/index.html',
       filename: 'index.html'
     }),
     // creates a file for all shared (common) modules across entry points
@@ -48,7 +48,7 @@ const common = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'stage-0', "react"]
+            presets: ['es2015', 'env', 'stage-0', "react"]
           }
         }
       },
