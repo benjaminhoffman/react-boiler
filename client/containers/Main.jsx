@@ -43,4 +43,6 @@ class Main extends Component {
   }
 }
 
+Main.displayName = 'Main Container'
+
 export default Main

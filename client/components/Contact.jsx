@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Contact extends Component {
   constructor(props) {
@@ -29,6 +30,12 @@ class Contact extends Component {
       [`${e.target.name}`]: e.target.value
     })
   }
+}
+
+Contact.displayName = 'Contact'
+
+Contact.propTypes = {
+  onContact: PropTypes.func.isRequired
 }
 
 export default Contact

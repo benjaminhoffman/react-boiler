@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Header.css'
+import PropTypes from 'prop-types'
 
 const Header = ({ tabs, onTabClick }) => {
   return (
@@ -13,6 +14,13 @@ const Header = ({ tabs, onTabClick }) => {
       })}
     </div>
   )
+}
+
+Header.displayName = 'Header'
+
+Header.propTypes = {
+  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onTabClick: PropTypes.func.isRequired
 }
 
 export default Header
