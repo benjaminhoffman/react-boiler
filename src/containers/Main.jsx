@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Header from './Header.jsx'
-import Home from './Home'
-import Contact from './Contact'
+import Contact from '../components/Contact'
+import Header from '../components/Header'
+import Home from '../components/Home'
 import styles from './Main.css'
 
 class Main extends Component {
@@ -16,15 +16,17 @@ class Main extends Component {
   }
 
   render () {
+    const { tabs, activeTab } = this.state
+
     return (
       <div className={styles.body}>
         <Header
-          tabs={this.state.tabs}
-          activeTab={this.state.activeTab}
+          tabs={tabs}
+          activeTab={activeTab}
           onTabClick={this.onTabClick}
           />
-        {this.state.activeTab === 'Home' && <Home />}
-        {this.state.activeTab === 'Contact' && <Contact onContact={this.onContact} />}
+        {activeTab === 'Home' && <Home />}
+        {activeTab === 'Contact' && <Contact onContact={this.onContact} />}
       </div>
     )
   }
@@ -34,10 +36,10 @@ class Main extends Component {
       activeTab: e.target.innerText
     })
   }
-  onContact (e) {
-    debugger
+
+  onContact (e, state) {
     e.preventDefault()
-    console.log(e.target.value)
+    console.log(state)
   }
 }
 

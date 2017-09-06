@@ -13,13 +13,13 @@ console.log('isProductionLike', isProductionLike)
 
 const common = {
   entry: {
-    app: './src/App.js',
+    app: './src/index.jsx',
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProductionLike ? 'production' : 'development'),
-        // API_KEY: JSON.stringify(process.env.API_KEY)
+        API_KEY: JSON.stringify(process.env.API_KEY)
       }
     }),
     // generates our html file
