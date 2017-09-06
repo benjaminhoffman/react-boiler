@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
+    "precommit": "lint-staged",
     "prod": "webpack -p",
     "start": "webpack && webpack-dev-server --open",
     "test": "jest --no-cache --notify",
