@@ -13,12 +13,6 @@
     "test": "jest --no-cache --notify",
     "watch": "webpack --watch"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy"
-    }
-  },
   "dependencies": {
     "dotenv": "^4.0.0",
     "lodash": "^4.17.4",
@@ -30,6 +24,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
@@ -37,6 +32,7 @@
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.4",
     "csv-loader": "^2.1.1",
+    "enzyme": "^2.9.1",
     "eslint": "^4.6.0",
     "eslint-config-prettier": "^2.4.0",
     "eslint-config-standard": "^10.2.1",
@@ -50,9 +46,13 @@
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.29.0",
     "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^21.1.0",
+    "jest-cli": "^21.1.0",
     "lint-staged": "^4.2.1",
     "prettier": "^1.6.1",
     "prop-types": "^15.5.10",
+    "react-test-renderer": "^15.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.3.0",
     "webpack-chunk-hash": "^0.4.0",
@@ -76,6 +76,12 @@
       "browser": true,
       "node": true,
       "mocha": true
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
     }
   },
   "lint-staged": {
