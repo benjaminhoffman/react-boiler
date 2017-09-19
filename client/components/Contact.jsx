@@ -12,16 +12,16 @@ class Contact extends Component {
     const { onContact } = this.props
     const { name } = this.state
     return (
-      <div>
+      <section role="region">
         Please complete this form:
-        <form onSubmit={(e) => onContact(e, this.state)}>
+        <form role="form" onSubmit={(e) => onContact(e, this.state)}>
           <label htmlFor='name'>
             Name:
             <input type='text' name='name' value={name} onChange={this.handleChange} />
             <input type='submit' value='Submit' />
           </label>
         </form>
-      </div>
+      </section>
     )
   }
 

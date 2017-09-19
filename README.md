@@ -44,7 +44,7 @@ For testing, we use Jest + Enzyme, type: `$ yarn test`
 - [x] add jest/enzyme
 - [ ] add lint-staged (https://github.com/okonet/lint-staged)
 - [ ] add react router 4
-- [ ] add logging
+- [ ] add logging & error handling (https://github.com/mzabriskie/axios#handling-errors)
 - [ ] less/sass/nextcss
 - [ ] css linter
 - [ ] jsdoc
@@ -56,10 +56,11 @@ For testing, we use Jest + Enzyme, type: `$ yarn test`
 - [ ] proptypes, defaultProps, displayName
 - [ ] loading spinner
 - [ ] fix package.json proxy setting
-- [ ] CSS/HTML: semantic markup (`<nav>` `<main>` `<header>` `<section>` `<footer>`  `<fieldset>`)
+- [x] CSS/HTML: semantic markup (`<nav>` `<main>` `<header>` `<section>` `<footer>`  `<fieldset>`)
+- [x] CSS/HTML: convert to `border-box`
 - [ ] CSS/HTML: add reset/normalize
-- [ ] CSS/HTML: convert to `border-box`
 - [ ] add JSDoc (see below)
+- [ ] remove `babel-preset-es2015` in favor of `babel-preset-env`
 
 
 #### JSDoc

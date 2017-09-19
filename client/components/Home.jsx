@@ -1,7 +1,11 @@
 import React from 'react'
 
 const Home = () => {
-    return <div>Home Page Here</div>
+  return (
+    <section role="region">
+      <div>This is the homepage!</div>
+    </section>
+  )
 }
 
 Home.displayName = 'Home'

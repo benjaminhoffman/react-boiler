@@ -4,15 +4,17 @@ import PropTypes from 'prop-types'
 
 const Header = ({ tabs, onTabClick }) => {
   return (
-    <div className={styles.tabs}>
-      {tabs.map(tab => {
-        return (
-          <div className={styles.tab} onClick={onTabClick} key={tab}>
-            {tab}
-          </div>
-        )
-      })}
-    </div>
+    <nav role="navigation">
+      <ul className={styles.tabs}>
+        {tabs.map(tab => {
+          return (
+            <li className={styles.tab} onClick={onTabClick} key={tab}>
+              {tab}
+            </li>
+          )
+        })}
+      </ul>
+    </nav>
   )
 }
 

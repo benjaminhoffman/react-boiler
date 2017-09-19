@@ -20,13 +20,20 @@ class Main extends Component {
 
     return (
       <div className={styles.body}>
-        <Header
-          tabs={tabs}
-          activeTab={activeTab}
-          onTabClick={this.onTabClick}
-          />
-        {activeTab === 'Home' && <Home />}
-        {activeTab === 'Contact' && <Contact onContact={this.onContact} />}
+        <header role="banner">
+          <Header
+            tabs={tabs}
+            activeTab={activeTab}
+            onTabClick={this.onTabClick}
+            />
+        </header>
+        <main role="main">
+          {activeTab === 'Home' && <Home />}
+          {activeTab === 'Contact' && <Contact onContact={this.onContact} />}
+        </main>
+        <footer role="contentinfo" className={styles.footer}>
+          Here is footer content
+        </footer>
       </div>
     )
   }
