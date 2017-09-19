@@ -9,6 +9,7 @@ although `create-react-app` is great, sometimes you want a home cooked meal.
 - CSS modules
 - Jest/Enzyme for testing
 - eslint/standard & prettier for linting & JS standards
+- lint-staged/husky for pre-commit lint checker
 
 ## server
 - node 8.1.6
@@ -41,23 +42,14 @@ For testing, we use Jest + Enzyme, type: `$ yarn test`
 ## To Do
 - [ ] see readme from `nri` repo
 - [ ] add redux
-- [x] add jest/enzyme
-- [ ] add lint-staged (https://github.com/okonet/lint-staged)
 - [ ] add react router 4
 - [ ] add logging & error handling (https://github.com/mzabriskie/axios#handling-errors)
 - [ ] less/sass/nextcss
 - [ ] css linter
-- [ ] jsdoc
-- [x] `.babelrc` (see `nri` repo)
-- [x] redux
 - [ ] use `static`
-- [x] add `.env` for env vars
-- [ ] handle network errors, etc
 - [ ] proptypes, defaultProps, displayName
 - [ ] loading spinner
 - [ ] fix package.json proxy setting
-- [x] CSS/HTML: semantic markup (`<nav>` `<main>` `<header>` `<section>` `<footer>`  `<fieldset>`)
-- [x] CSS/HTML: convert to `border-box`
 - [ ] CSS/HTML: add reset/normalize
 - [ ] add JSDoc (see below)
 - [ ] remove `babel-preset-es2015` in favor of `babel-preset-env`

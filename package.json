@@ -50,6 +50,8 @@
     "file-loader": "^0.11.2",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.29.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.1",
     "prettier": "^1.6.1",
     "prop-types": "^15.5.10",
     "style-loader": "^0.18.2",
