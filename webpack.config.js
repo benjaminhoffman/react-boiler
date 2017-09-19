@@ -7,18 +7,19 @@ const env = process.env.NODE_ENV || 'development'
 const ManifestPlugin = require('webpack-manifest-plugin')
 require('dotenv').config()
 
-
 const isProductionLike = env === 'production' || env === 'staging'
 console.log('isProductionLike', isProductionLike)
 
 const common = {
   entry: {
-    app: './client/index.jsx',
+    app: './client/index.jsx'
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(isProductionLike ? 'production' : 'development'),
+        NODE_ENV: JSON.stringify(
+          isProductionLike ? 'production' : 'development'
+        ),
         API_KEY: JSON.stringify(process.env.API_KEY)
       }
     }),
@@ -31,8 +32,8 @@ const common = {
     // loads once and uses cache for pagespeed optimizations
     // webpack.js.org/plugins/commons-chunk-plugin/
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-    }),
+      name: 'common'
+    })
   ],
   output: {
     filename: 'bundle.js',
@@ -48,7 +49,7 @@ const common = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['es2015', 'env', 'stage-0', "react"]
+            presets: ['env', 'stage-0', 'react']
           }
         }
       },
@@ -82,7 +83,7 @@ const common = {
       },
       {
         test: /\.html$/,
-        use: [ 'html-loader' ]
+        use: ['html-loader']
       }
     ]
   },
@@ -100,18 +101,18 @@ const development = Merge(common, {
     sourceMapFilename: '[name].map'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),          // replace dist dir on each new build
-    new webpack.HotModuleReplacementPlugin(),  // Enable HMR
+    new CleanWebpackPlugin(['dist']), // replace dist dir on each new build
+    new webpack.HotModuleReplacementPlugin() // Enable HMR
   ],
   devServer: {
-    hot: true,   // use HMR
+    hot: true, // use HMR
     contentBase: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: '/'
   }
 })
 
 const production = Merge(common, {
-  devtool: 'nosources-source-map',  // webpack.js.org/configuration/devtool/#production
+  devtool: 'nosources-source-map', // webpack.js.org/configuration/devtool/#production
   output: {
     // use [chunkhash] for asset caching
     filename: '[name].[chunkhash:8].bundle.js',
