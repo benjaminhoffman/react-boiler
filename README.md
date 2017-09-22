@@ -46,13 +46,10 @@ For testing, we use Jest + Enzyme, type: `$ yarn test`
 - [ ] add logging & error handling (https://github.com/mzabriskie/axios#handling-errors)
 - [ ] less/sass/nextcss
 - [ ] css linter
-- [ ] use `static`
-- [ ] proptypes, defaultProps, displayName
 - [ ] loading spinner
 - [ ] fix package.json proxy setting
 - [ ] CSS/HTML: add reset/normalize
 - [ ] add JSDoc (see below)
-- [ ] remove `babel-preset-es2015` in favor of `babel-preset-env`
 
 
 #### JSDoc

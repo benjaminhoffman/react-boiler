@@ -5,17 +5,15 @@ import Home from '../components/Home'
 import styles from './Main.css'
 
 class Main extends Component {
-  constructor (props) {
-    super (props)
+  constructor(props) {
+    super(props)
     this.state = {
       tabs: ['Home', 'Contact'],
       activeTab: 'Home'
     }
-    this.onTabClick = this.onTabClick.bind(this)
-    this.onContact = this.onContact.bind(this)
   }
 
-  render () {
+  render() {
     const { tabs, activeTab } = this.state
 
     return (
@@ -25,7 +23,7 @@ class Main extends Component {
             tabs={tabs}
             activeTab={activeTab}
             onTabClick={this.onTabClick}
-            />
+          />
         </header>
         <main role="main">
           {activeTab === 'Home' && <Home />}
@@ -38,13 +36,13 @@ class Main extends Component {
     )
   }
 
-  onTabClick (e) {
+  onTabClick = e => {
     this.setState({
       activeTab: e.target.innerText
     })
   }
 
-  onContact (e, state) {
+  onContact = (e, state) => {
     e.preventDefault()
     console.log(state)
   }

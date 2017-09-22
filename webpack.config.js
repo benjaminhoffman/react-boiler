@@ -12,7 +12,7 @@ console.log('isProductionLike', isProductionLike)
 
 const common = {
   entry: {
-    app: './client/index.jsx'
+    app: './client/index.js'
   },
   plugins: [
     new webpack.DefinePlugin({
