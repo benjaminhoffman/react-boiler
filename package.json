@@ -15,10 +15,13 @@
   },
   "dependencies": {
     "dotenv": "^4.0.0",
+    "imagemin-webpack-plugin": "^1.5.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "responsive-loader": "^1.1.0",
+    "sharp": "^0.18.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

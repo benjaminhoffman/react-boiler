@@ -1,0 +1,45 @@
+.img {
+  width: 100%;
+}
+
+.saintsPng {
+  background-image: url('/saints_png.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 1000px;
+}
+
+.saintsJpg {
+  background-image: url('/saints_jpg.jpeg');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 1000px;
+}
+
+.sunsetPng {
+  background-image: url('/sunset_png.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 1000px;
+}
+
+.sunsetJpg {
+  background-image: url('/sunset_jpg.jpeg');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 1000px;
+}
+
+td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+td > * {
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ddd;
+}

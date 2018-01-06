@@ -7,6 +7,8 @@ const env = process.env.NODE_ENV || 'development'
 const ManifestPlugin = require('webpack-manifest-plugin')
 require('dotenv').config()
 
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+
 const isProductionLike = env === 'production' || env === 'staging'
 console.log('isProductionLike', isProductionLike)
 
@@ -33,6 +35,14 @@ const common = {
     // webpack.js.org/plugins/commons-chunk-plugin/
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common'
+    }),
+    new ImageminPlugin({
+      pngquant: {
+        quality: '25'
+      },
+      jpegtran: {
+        progressive: true
+      }
     })
   ],
   output: {
@@ -43,6 +53,16 @@ const common = {
   },
   module: {
     rules: [
+      {
+        test: /\.(jpe?g|png)$/i,
+        loader: 'responsive-loader',
+        options: {
+          adapter: require('responsive-loader/sharp'),
+          sizes: [300, 600, 1200, 2000],
+          placeholder: true,
+          placeholderSize: 50
+        }
+      },
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
@@ -70,8 +90,15 @@ const common = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader']
+        test: /\.(png|svg|jpe?g|gif|woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.(csv|tsv)$/,
