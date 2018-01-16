@@ -2,6 +2,12 @@ made-from-scratch react boiler.  with webpack & babel, yarn.
 
 although `create-react-app` is great, sometimes you want a home cooked meal.
 
+## image-optimizations branch
+this branch was created to test the following webpack loaders:
+- imagemin-webpack-plugin
+- responsive-loader(which relies on sharp)
+
+
 ## client
 - react 15
 - webpack 3
